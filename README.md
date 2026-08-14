@@ -5,15 +5,13 @@ Public Rust types used to create Extensions compatible with Cycle Paradox.
 The API is currently at an early stage. Compatibility may change between
 versions while the extension system is being developed.
 
-## Installation
+## Availability
 
-Add the following dependency to your `Cargo.toml`:
+This crate is not yet published on crates.io.
 
-    cycle-paradox-extension-api = "0.1.0"
-
-The Rust crate name uses underscores:
-
-    use cycle_paradox_extension_api::RuntimePaths;
+Its public contract is being developed alongside the first playable
+Cycle Paradox Extension. The repository is currently available for
+development and review, but no stable installation version exists yet.
 
 ## Permitted uses
 

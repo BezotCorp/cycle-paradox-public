@@ -3,7 +3,7 @@
 All notable changes to the Cycle Paradox Extension API will be documented in
 this file.
 
-## [0.1.0] - 2026-08-14
+## [0.1.0] - Unreleased
 
 ### Added
 
