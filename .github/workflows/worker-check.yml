@@ -9,6 +9,9 @@ on:
       current_version:
         description: "The version currently declared by the public crate"
         value: ${{ jobs.check.outputs.current_version }}
+      next_version:
+        description: "The next version selected by semantic-release"
+        value: ${{ jobs.check.outputs.next_version }}
       current_version_published:
         description: "Whether crates.io and the GitHub release contain current_version"
         value: ${{ jobs.check.outputs.current_version_published }}
@@ -19,6 +22,7 @@ jobs:
     outputs:
       has_new_version: ${{ steps.check.outputs.has_new_version }}
       current_version: ${{ steps.check.outputs.current_version }}
+      next_version: ${{ steps.check.outputs.next_version }}
       current_version_published: ${{ steps.check.outputs.current_version_published }}
     steps:
       - name: Generate release bot token

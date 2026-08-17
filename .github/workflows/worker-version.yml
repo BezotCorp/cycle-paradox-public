@@ -2,6 +2,11 @@ name: Worker Version
 
 on:
   workflow_call:
+    inputs:
+      version:
+        description: "Version selected by worker-check"
+        required: true
+        type: string
     outputs:
       has_new_version:
         description: "Whether semantic-release found a new version to release"
@@ -70,13 +75,13 @@ jobs:
           git fetch origin release/pending
           git checkout release/pending
 
-      - name: Run semantic-release (bump only)
+      - name: Prepare version commit
         id: run
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          if ./scripts/run-semantic-release-version.sh; then
+          if ./scripts/run-semantic-release-version.sh "${{ inputs.version }}"; then
             NEW_VERSION=$(./scripts/read-crate-version.sh cycle-paradox-extension-api)
             echo "has_new_version=true" >> "$GITHUB_OUTPUT"
             echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"

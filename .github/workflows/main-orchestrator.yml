@@ -19,6 +19,8 @@ jobs:
     if: needs.check.outputs.has_new_version == 'true'
     uses: ./.github/workflows/worker-version.yml
     secrets: inherit
+    with:
+      version: ${{ needs.check.outputs.next_version }}
 
   sync-only:
     needs: [check, version]
