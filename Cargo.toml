@@ -1,26 +1,5 @@
-[package]
-name = "cycle-paradox-extension-api"
-version = "0.1.0"
-edition = "2024"
-description = "Public Rust API for developing extensions compatible with Cycle Paradox."
-license-file = "LICENSE"
-readme = "README.md"
-documentation = "https://docs.rs/cycle-paradox-extension-api"
-repository = "https://github.com/BezotCorp/cycle-paradox-extension-api"
-keywords = ["cycle-paradox", "modding", "extensions", "gamedev"]
-categories = ["game-development"]
-include = [
-    "src/**/*.rs",
-    "tests/**/*.rs",
-    "Cargo.toml",
-    "Cargo.lock",
-    "README.md",
-    "LICENSE",
-    "COMMUNITY_CONTENT_POLICY.md",
-    "CONTRIBUTING.md",
-    "CHANGELOG.md",
+[workspace]
+resolver = "3"
+members = [
+    "cycle_paradox_extension_api",
 ]
-
-[dependencies]
-bincode-next = { version = "3.1.1", features = ["serde"] }
-serde = { version = "1.0.229", features = ["derive"] }
