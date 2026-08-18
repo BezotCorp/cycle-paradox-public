@@ -42,7 +42,7 @@ if gh api \
     >/dev/null 2>"$ERROR_FILE"
 then
   GITHUB_RELEASE_PUBLISHED=true
-elif rg -q 'HTTP 404|Not Found' "$ERROR_FILE"; then
+elif grep -Eq 'HTTP 404|Not Found' "$ERROR_FILE"; then
   GITHUB_RELEASE_PUBLISHED=false
 else
   cat "$ERROR_FILE" >&2
