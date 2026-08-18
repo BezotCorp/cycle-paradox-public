@@ -45,12 +45,11 @@ GITHUB_RELEASE_PUBLISHED="$(
 )"
 
 case "$CRATE_PUBLISHED:$GITHUB_RELEASE_PUBLISHED" in
-  true:true|true:false|false:true|false:false)
-    ;;
-  *)
-    echo "invalid publication state: $PUBLICATION_STATE" >&2
-    exit 3
-    ;;
+true:true | true:false | false:true | false:false) ;;
+*)
+  echo "invalid publication state: $PUBLICATION_STATE" >&2
+  exit 3
+  ;;
 esac
 
 if [ "$CRATE_PUBLISHED" = false ]; then
@@ -68,18 +67,20 @@ if [ "$GITHUB_RELEASE_PUBLISHED" = false ]; then
     --tags \
     origin \
     "refs/tags/$RELEASE_VERSION" \
-    >/dev/null 2>&1
-  then
+    >/dev/null 2>&1; then
     echo "Tag $RELEASE_VERSION already exists."
   else
     git tag "$RELEASE_VERSION" origin/main
     git push origin "refs/tags/$RELEASE_VERSION"
   fi
 
-  gh release create "$RELEASE_VERSION" \
-    --repo "$REPOSITORY" \
-    --title "$RELEASE_VERSION" \
-    --notes-from-tag
+  ./scripts/read-changelog-release.sh \
+    cycle_paradox_extension_api/CHANGELOG.md \
+    "$RELEASE_VERSION" |
+    gh release create "$RELEASE_VERSION" \
+      --repo "$REPOSITORY" \
+      --title "$RELEASE_VERSION" \
+      --notes-file -
 else
   echo "GitHub release $RELEASE_VERSION already exists."
 fi

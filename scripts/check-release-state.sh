@@ -8,13 +8,13 @@ fi
 
 CRATE_NAME="$1"
 REPOSITORY="$2"
-OUTPUT_FILE="${GITHUB_OUTPUT:-/dev/stdout}"
+OUTPUT_FILE="${GITHUB_OUTPUT:?GITHUB_OUTPUT is required}"
 
 CURRENT_VERSION="$(
   ./scripts/read-crate-version.sh "$CRATE_NAME"
 )"
 
-printf 'current_version=%s\n' "$CURRENT_VERSION" >> "$OUTPUT_FILE"
+printf 'current_version=%s\n' "$CURRENT_VERSION" >>"$OUTPUT_FILE"
 
 set +e
 ./scripts/check-rust-publication.sh \
@@ -25,35 +25,32 @@ PUBLICATION_STATUS=$?
 set -e
 
 case "$PUBLICATION_STATUS" in
-  0)
-    printf 'current_version_published=true\n' >> "$OUTPUT_FILE"
-    ;;
-  1)
-    printf 'current_version_published=false\n' >> "$OUTPUT_FILE"
-    ;;
-  *)
-    echo "failed to determine publication state" >&2
-    exit "$PUBLICATION_STATUS"
-    ;;
+0)
+  printf 'current_version_published=true\n' >>"$OUTPUT_FILE"
+  ;;
+1)
+  printf 'current_version_published=false\n' >>"$OUTPUT_FILE"
+  ;;
+*)
+  echo "failed to determine publication state" >&2
+  exit "$PUBLICATION_STATUS"
+  ;;
 esac
-
-rm -f .next-release-version
-trap 'rm -f .next-release-version' EXIT
 
 pnpm exec semantic-release --dry-run
 
-if [ -s .next-release-version ]; then
-  NEXT_VERSION="$(
-    tr -d '\r\n' < .next-release-version
-  )"
+NEXT_VERSION="$(
+  sed -n 's/^next_version=//p' "$OUTPUT_FILE" |
+    tail -n 1
+)"
 
-  printf 'has_new_version=true\n' >> "$OUTPUT_FILE"
-  printf 'next_version=%s\n' "$NEXT_VERSION" >> "$OUTPUT_FILE"
+if [ -n "$NEXT_VERSION" ]; then
+  printf 'has_new_version=true\n' >>"$OUTPUT_FILE"
 
   echo "semantic-release selected version $NEXT_VERSION"
 else
-  printf 'has_new_version=false\n' >> "$OUTPUT_FILE"
-  printf 'next_version=\n' >> "$OUTPUT_FILE"
+  printf 'has_new_version=false\n' >>"$OUTPUT_FILE"
+  printf 'next_version=\n' >>"$OUTPUT_FILE"
 
   echo "semantic-release found no new version"
 fi

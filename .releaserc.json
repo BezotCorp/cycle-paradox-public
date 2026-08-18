@@ -1,7 +1,5 @@
 {
-  "branches": [
-    "main"
-  ],
+  "branches": ["main"],
   "tagFormat": "${version}",
   "plugins": [
     [
@@ -25,18 +23,14 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "semantic-release-cargo prepare ${nextRelease.version} && rm -f .next-release-version",
-        "verifyReleaseCmd": "printf '%s\\n' '${nextRelease.version}' > .next-release-version"
+        "prepareCmd": "semantic-release-cargo prepare ${nextRelease.version}",
+        "verifyReleaseCmd": "printf 'next_version=%s\\n' '${nextRelease.version}' >> \"$GITHUB_OUTPUT\""
       }
     ],
     [
       "@semantic-release/git",
       {
-        "assets": [
-          "Cargo.lock",
-          "cycle_paradox_extension_api/Cargo.toml",
-          "cycle_paradox_extension_api/CHANGELOG.md"
-        ],
+        "assets": ["Cargo.lock", "cycle_paradox_extension_api/Cargo.toml", "cycle_paradox_extension_api/CHANGELOG.md"],
         "message": "chore: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
