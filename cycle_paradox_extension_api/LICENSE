@@ -1,0 +1,143 @@
+CYCLE PARADOX EXTENSION API LICENSE
+Version 1.0
+
+Copyright (c) 2026 Rémi Bezot.
+Cycle Paradox and Bezotcorp are identifiers used by the Licensor.
+
+1. DEFINITIONS
+
+"Licensor" means Rémi Bezot.
+
+"API" means the Cycle Paradox Extension API package, including its source
+code, types, interfaces, documentation and associated files.
+
+"Cycle Paradox" means the game, its official software, content, services,
+names, visual identity and extension mechanisms.
+
+"Extension" means any mod, downloadable content, scenario, campaign,
+integration or other content designed to interact with Cycle Paradox through
+the API.
+
+"Original Contribution" means material independently created by an Extension
+author, excluding the API, Cycle Paradox, generic mechanisms, concepts,
+interfaces and material owned or supplied by the Licensor.
+
+"Commercial Use" means any sale, paid access, subscription, commission,
+licensing fee, advertising revenue, sponsorship, paid feature, paid advantage
+or other direct or indirect monetization connected to an Extension.
+
+2. PERMITTED USE
+
+Subject to this License, the Licensor grants a personal, non-exclusive,
+non-transferable and revocable permission to:
+
+a. download, inspect and compile the API;
+b. use the API to develop and test Extensions privately;
+c. distribute an Extension free of charge, provided that every condition of
+   this License and the Community Content Policy is respected;
+d. reproduce the unmodified API only where technically necessary for a
+   permitted use, registry distribution or documentation hosting.
+
+This is a source-available proprietary license. It is not an open-source
+license.
+
+3. CONDITIONS OF DISTRIBUTION
+
+Every distributed Extension must:
+
+a. state that it is compatible with Cycle Paradox;
+b. identify itself clearly as unofficial unless the Licensor has authorized
+   it as official;
+c. credit "Cycle Paradox — Rémi Bezot / Bezotcorp";
+d. include a visible reference to this License and the Community Content
+   Policy;
+e. identify the Extension author separately from the owner of Cycle Paradox;
+f. declare the versions of the API and game with which it is compatible;
+g. remain available without payment unless a separate written commercial
+   agreement authorizes monetization.
+
+4. PROHIBITED USE
+
+Without the Licensor's prior written authorization, no person may:
+
+a. make Commercial Use of an Extension or the API;
+b. sell, sublicense, rent or commercially redistribute the API;
+c. publish a modified version of the API as an alternative or replacement;
+d. claim ownership of Cycle Paradox, the API or its extension mechanisms;
+e. present an Extension as official, endorsed or affiliated;
+f. use Cycle Paradox or Bezotcorp identifiers as the principal identity of
+   another product, company or service;
+g. remove or conceal notices of ownership, attribution or licensing;
+h. use the API to circumvent security, access controls or commercial systems.
+
+Commercial authorization, revenue sharing and platform distribution require
+a separate written agreement. No commercial right is implied by access to the
+API.
+
+5. OWNERSHIP
+
+The Licensor retains every right in Cycle Paradox, the API, its types,
+interfaces, extension points, generic mechanisms, official content and
+distinctive identifiers.
+
+An Extension author retains rights in their Original Contributions. Those
+rights grant no ownership or control over Cycle Paradox or the API and do not
+remove the obligations imposed by this License.
+
+An Extension author acquires no exclusive right over a general theme, genre,
+mechanic, category, historical period, disaster type, pathogen, alien concept,
+time-travel concept or other abstract idea.
+
+The Licensor may independently create official content involving similar
+ideas or themes. Similarity alone does not establish copying, authorization,
+ownership or entitlement to payment.
+
+6. ORIGINAL COMMUNITY MATERIAL
+
+The Licensor receives no ownership of an Original Contribution merely because
+it uses the API.
+
+If the Licensor wishes to reproduce or substantially incorporate protected
+original material from an Extension into paid official content, permission and
+any compensation must be established through a separate written agreement.
+
+Use of the Licensor's own API, interfaces, generic mechanisms or independently
+created material does not constitute use of an Extension author's Original
+Contribution.
+
+7. EVOLUTION AND COMPATIBILITY
+
+The Licensor may modify, replace or remove any API or extension point.
+
+No stability, availability, maintenance or backward compatibility is
+guaranteed. An Extension author is responsible for maintaining compatibility
+and must not claim compatibility with a version that the Extension does not
+support.
+
+A good-faith technical, security, maintenance or design change is not an
+eviction, even when it makes an Extension incompatible.
+
+8. TERMINATION
+
+The permission granted by this License terminates automatically upon breach.
+After termination, the person in breach must cease distribution and use of the
+API and affected Extensions, without prejudice to rights that cannot lawfully
+be excluded.
+
+The Licensor may offer reinstatement in writing after the breach has been
+remedied.
+
+9. DISCLAIMER
+
+THE API IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, TO THE MAXIMUM
+EXTENT PERMITTED BY LAW. THE LICENSOR DOES NOT GUARANTEE FITNESS,
+COMPATIBILITY, CONTINUITY, SECURITY OR ERROR-FREE OPERATION.
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSOR SHALL NOT BE LIABLE FOR
+INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL LOSS ARISING FROM USE OF THE
+API.
+
+10. APPLICABLE LAW
+
+This License is governed by French law. Mandatory consumer and public-order
+rules remain applicable where they cannot lawfully be excluded.
