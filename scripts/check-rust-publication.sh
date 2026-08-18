@@ -49,12 +49,27 @@ else
   exit 3
 fi
 
+case "$CRATE_PUBLISHED:$GITHUB_RELEASE_PUBLISHED" in
+  true:true)
+    PUBLICATION_STATE=complete
+    ;;
+  false:false)
+    PUBLICATION_STATE=absent
+    ;;
+  true:false | false:true)
+    PUBLICATION_STATE=partial
+    ;;
+  *)
+    echo "invalid publication state" >&2
+    exit 3
+    ;;
+esac
+
 printf 'crate_published=%s\n' "$CRATE_PUBLISHED"
 printf 'github_release_published=%s\n' "$GITHUB_RELEASE_PUBLISHED"
+printf 'publication_state=%s\n' "$PUBLICATION_STATE"
 
-if [ "$CRATE_PUBLISHED" = true ] &&
-   [ "$GITHUB_RELEASE_PUBLISHED" = true ]
-then
+if [ "$PUBLICATION_STATE" = complete ]; then
   exit 0
 fi
 

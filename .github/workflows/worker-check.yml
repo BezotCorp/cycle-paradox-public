@@ -15,6 +15,9 @@ on:
       current_version_published:
         description: "Whether crates.io and the GitHub release contain current_version"
         value: ${{ jobs.check.outputs.current_version_published }}
+      current_version_publication_state:
+        description: "Whether current_version is complete, partial, or absent"
+        value: ${{ jobs.check.outputs.current_version_publication_state }}
 
 jobs:
   check:
@@ -24,6 +27,7 @@ jobs:
       current_version: ${{ steps.check.outputs.current_version }}
       next_version: ${{ steps.check.outputs.next_version }}
       current_version_published: ${{ steps.check.outputs.current_version_published }}
+      current_version_publication_state: ${{ steps.check.outputs.current_version_publication_state }}
     steps:
       - name: Generate release bot token
         id: app-token
