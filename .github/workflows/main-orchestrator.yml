@@ -28,13 +28,13 @@ jobs:
 
   sync-only:
     needs: [check, version]
-    if: always() && needs.check.outputs.has_new_version == 'false' && needs.check.outputs.current_version_published == 'true'
+    if: always() && needs.check.outputs.has_new_version == 'false' && needs.check.outputs.current_version_publication_state == 'complete'
     uses: ./.github/workflows/worker-sync.yml
     secrets: inherit
 
   publish-existing:
     needs: check
-    if: needs.check.outputs.has_new_version == 'false' && needs.check.outputs.current_version_published == 'false'
+    if: needs.check.outputs.has_new_version == 'false' && needs.check.outputs.current_version_publication_state == 'partial'
     uses: ./.github/workflows/worker-publish.yml
     secrets: inherit
     with:
